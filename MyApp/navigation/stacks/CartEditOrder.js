@@ -98,8 +98,10 @@ const CartEditOrder = ({navigation, route}) => {
               <View>
                 {order.itemsChosen.map((element, index) => {
                   return (
-                    <View key={index}>
-                      <Text>・{element.name}</Text>
+                    <View key={index} style={{
+                      flexDirection:'row',
+                    }}>
+                      <Text style={{flexGrow:1}}>・{element.name}</Text>
                       <Text>+{element.due}</Text>
                     </View>
   
@@ -107,31 +109,61 @@ const CartEditOrder = ({navigation, route}) => {
                 })}
               </View>
               
-              <View>
-                <View>
+              <View style={{flexDirection:'row'}}>
+                <View style={{
+                  flexDirection:'row',
+                  flexGrow: 1,
+                }}>
                   <Pressable 
                     onPress={()=>{
                       if (orderAmount > 1) {
                       setOrderAmount(orderAmount-1)
                     }}}
                   >
-                    <Text>⊖</Text>
+                    <Text style={{
+											transform: 'scale(1.5)',
+									}}>⊖</Text>
                   </Pressable>
-                  <TextInput value={orderAmount} onChangeText={setOrderAmount} />
+                  <TextInput value={orderAmount} onChangeText={setOrderAmount} style={{
+											width:30,
+											fontSize: 18,
+											paddingLeft: 5,
+											paddingRight: 5,
+										}} />
                   <Pressable onPress={()=>{setOrderAmount(orderAmount+1)}}>
-                    <Text>⊕</Text>
+                    <Text style={{
+											transform: 'scale(1.5)',
+										}}>⊕</Text>
                   </Pressable>
                 </View>
   
-                <Text>{orderAmount * price}</Text>
+                <Text style={{
+                  fontSize: 18,
+                  fontFamily: "National2",
+                  lineHeight: 1.5,
+                  fontWeight: 600,
+                  alignSelf: 'center',
+                }}>{orderAmount * price}</Text>
               </View>
   
             </View>
   
             <View>
-              <View>
-                <Text>ORDER TOTAL</Text>
-                <Text>{orderAmount * price}</Text>
+              <View style={{flexDirection:'row',paddingTop: 10,}}>
+                <Text style={{
+									flexGrow:1,
+									fontSize: 18,
+									fontFamily: "National2",
+									lineHeight: 1.5,
+									fontWeight: 600,
+								}}>ORDER TOTAL</Text>
+                <Text style={{
+                    fontSize: 18,
+                    fontFamily: "National2",
+                    lineHeight: 1.5,
+                    fontWeight: 600,
+                    color: 'red',
+                }}>{orderAmount * price}</Text>
               </View>
   
               <View>

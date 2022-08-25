@@ -17,9 +17,13 @@ Remember to reload site everytime you change windows dimensions to see responsiv
 - `/castone/media`: media folder storing pictures  
 - `/capstone/MyApp`: front-end subfolder, react-native-expo
     - `/capstone/MyApp/App.js` is root js file
-    - `/capstone/MyApp/navigation` subfolder contains `bottomTabs` and `stacks` folder. Which are website pages components
+    - `/capstone/MyApp/navigation` subfolder contains `bottomTabs` and `stacks` folder. Which are website pages components.  
+        - `bottomTabs` includes `Home`, `Cart` and `Setting`
+        - `stacks` includes mainly pages of `Home` bottomTabs
+            - `stacks` folder also includes `components` folder. Which contains components of pages
+
     - `/capstone/MyApp/navigation/FetchingFunctions.js` contains api functions
-    - `/capstone/MyApp/navigation/Style.js` contains some stylesheets, not entire
+    - `/capstone/MyApp/navigation/Style.js` contains some stylesheets, not entirely
 
 
 > ### To run (using bash in ubuntu 22.04):  
@@ -39,10 +43,12 @@ Remember to reload site everytime you change windows dimensions to see responsiv
 
 #### To add items as admin:  
 - Add item in `Pictures`(not require)
-- Add single-item in `Items` 
-- Add choice-item in `Selection`
-- Add dish to show in menu in `Dishs`
-- You may add `Deals` for news and `Vouchers` for discount
+- Add single-item in `Items`. Item chooses picture from `Pictures` 
+- Add choice-item in `Selection`. Choice-item chooses picture from `Pictures` and choose items from `Items`
+- Add dish to show in menu (User interface) in `Dishs`. Dish chooses single-items from `Items`, choice-items from `Selection` and picture from `Pictures`.  
+You may need to add in order: `Pictures`-`Items`-`Selections`-`Dishs`
+- You may add `Deals` for news and `Vouchers` for discount  
+Note: Many fields are duplicate when you try to add dish to menu. I still cannot optimize models structure.
 
 
 

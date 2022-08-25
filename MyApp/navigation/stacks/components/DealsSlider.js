@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useRef, useContext} from "react";
 import { View, Image, ScrollView, Dimensions, Text, StyleSheet, Pressable } from "react-native";
-import { HomeScreenContext } from "../HomeScreen";
+import { useNavigation } from "@react-navigation/native";
 
 const windowWidth = Dimensions.get('window').width > 1000 ? 1000 : Dimensions.get('window').width
 const windowHeight = windowWidth * 0.4
@@ -10,9 +10,7 @@ const DealsSlider = (props) => {
     deals,
   } = props
 
-  const {
-    navigation,
-  } = useContext(HomeScreenContext)
+  const navigation = useNavigation()
 
   // Dot state
   const [currentSlide, setCurrentSlide] = useState(0)

@@ -101,10 +101,25 @@ const CartScreen = (props) => {
 		return (
 			<ScrollView style={style.homeContainer} showsVerticalScrollIndicator={false}>
 
-				<Pressable onPress={()=>{
-					navigation.navigate('Settings')
-				}}>
-					<Text>LOGIN FIRST</Text>
+				<Pressable 
+					onPress={()=>{
+						navigation.navigate('Settings')
+					}} 
+					style={{
+						width: '50%',
+						backgroundColor: 'chartreuse',
+						fontWeight: 'bold',
+						textTransform:'uppercase',
+						textAlign:'center',
+						paddingBottom: 10,
+						paddingTop: 10,
+						borderRadius: 6,
+					}} 
+				>
+					<Text style={{
+						fontSize: 16,
+						fontWeight: 500,
+					}}>LOGIN FIRST</Text>
 				</Pressable>
 
     	</ScrollView>
