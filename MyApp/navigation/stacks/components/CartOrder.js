@@ -60,7 +60,6 @@ const CartOrder = (props) => {
       </View>
     )
   }
-  
   else {
     return (
       <View style={{

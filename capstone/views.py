@@ -133,12 +133,11 @@ def register(request):
     username = request.data.get('username')
     password = request.data.get('password')
     try:
-        user = User.objects.create_user(username, password)
-        ic(user)
-
-        token = Token.objects.create(user=user)
-        ic(token)
-        return Response(token, status=200)
+        user = User.objects.create_user(username=username, password=password)
+        # ic(user)
+        Token.objects.create(user=user)
+        # ic(token)
+        return Response(status=status.HTTP_201_CREATED)
     except:
         return Response({'detail': 'Wrong username or password'}, status=status.HTTP_400_BAD_REQUEST)
 

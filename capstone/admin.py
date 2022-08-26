@@ -4,7 +4,7 @@ from .models import User, Category, Item, Picture, Dish, Voucher, Order, Selecti
 
 
 class UserAdmin(UserAdmin):
-    list_display = ("id", "username")
+    list_display = ("id", "username", "password")
 
 
 class CategoryAdmin(admin.ModelAdmin):

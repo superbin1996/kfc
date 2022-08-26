@@ -118,7 +118,7 @@ export default class FetchingFunctions {
           throw Error(response.statusText)
         }
         // console.log("Success")
-        return response.json()
+        // return response.json()
       })
     )
   }

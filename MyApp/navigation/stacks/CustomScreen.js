@@ -118,9 +118,11 @@ const CustomScreen = ({navigation, route}) => {
 				<View style={style.orderTotal}>
 					<ImageSlider imageArray={imageArray} />
 
+					{/* DASHBOARD */}
 					<View>
 						<Text style={style.customName}>{orderTotal}X {categoryDish.name.toUpperCase()}</Text>
-
+						
+						{/* CHOSEN ITEM LIST */}
 						<View>
 						{itemsChosen.map((element, index) => {
 							return (

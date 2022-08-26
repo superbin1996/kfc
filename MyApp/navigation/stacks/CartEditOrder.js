@@ -91,18 +91,20 @@ const CartEditOrder = ({navigation, route}) => {
           {/* ORDER AND COST */}
           <View style={style.orderAmount}>
             <ImageSlider imageArray={imageArray} />
-  
+
+            {/* DASHBOARD */}
             <View>
               <Text style={style.customName}>{orderAmount}X {order.categoryDish.name.toUpperCase()}</Text>
-  
+
+              {/* CHOSEN ITEM LIST */}
               <View>
-                {order.itemsChosen.map((element, index) => {
+                {itemsChosen.map((element, index) => {
                   return (
                     <View key={index} style={{
                       flexDirection:'row',
                     }}>
                       <Text style={{flexGrow:1}}>・{element.name}</Text>
-                      <Text>+{element.due}</Text>
+                      <Text>+{element.due||0}</Text>
                     </View>
   
                   )

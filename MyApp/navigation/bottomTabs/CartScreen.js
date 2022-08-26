@@ -186,13 +186,13 @@ const CartScreen = (props) => {
 		return (
 			<ScrollView style={style.homeContainer} showsVerticalScrollIndicator={false}>
 				<Modal
-          animationType="slide"
-          transparent={true}
-          visible={showHistory}
-          onRequestClose={() => {
-            setShowHistory(!showHistory)
-          }}
-        >
+					animationType="slide"
+					transparent={true}
+					visible={showHistory}
+					onRequestClose={() => {
+						setShowHistory(!showHistory)
+					}}
+				>
 					<OrderHistory
 						showHistory={showHistory}
 						setShowHistory={setShowHistory} 

@@ -74,7 +74,7 @@ const SettingsScreen = (props) => {
     event.preventDefault()
     console.log(`register run: ${username}, ${password}`)
     
-    FetchingFunctions.Register({username: username, password: password})
+    FetchingFunctions.Register({username, password})
     .then(() => event)
     .then((e)=>{
       console.log(event)
@@ -110,6 +110,7 @@ const SettingsScreen = (props) => {
             }}
           />
 
+          {/* BUTTOM */}
 					{showRegister ?
             // Register
 						<Pressable onPress={register}
