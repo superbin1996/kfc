@@ -1,6 +1,7 @@
 # web50 finalproject-capstone  
 
 ## KFC order site (mobile first)  
+https://youtu.be/nV5THz9gguo
 
 ## Creator: superbin1996
 
