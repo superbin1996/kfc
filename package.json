@@ -1,0 +1,12 @@
+{
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "python3 manage.py runserver",
+    "client": "expo start --prefix MyApp",
+    "start": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\""
+  },
+
+  "devDependencies": {
+    "concurrently": "^7.4.0"
+  }
+}
