@@ -42,7 +42,7 @@ def item_images(request, item_id):
     """
     Get items for each category
     """
-    images = Dish.objects.prefetch_related('image_url', 'image').get(id=item_id).images.values('image_url', 'image')
+    images = Dish.objects.get(id=item_id).images.values('image', 'image_url')
     # ic(images)
 
     return Response(images, status=200)
@@ -62,7 +62,7 @@ def dish_items(request, dish_id):
             selections = Selection.objects.prefetch_related('choices', 'default').get(
                 id=id['id'])
             choices = selections.choices.values(
-                'id', 'name', 'price', 'category__field', 'image__image_url', 'image__image')
+                'id', 'name', 'price', 'category__field', 'image__image')
 
             default = {
                 'id': selections.default.id,

@@ -1,12 +1,11 @@
-import React, { useState } from "react";
-import { Alert, Modal, StyleSheet, Text, Pressable, View } from "react-native";
+import React from "react";
+import { Modal, StyleSheet, Text, Pressable, View } from "react-native";
 import { Dimensions } from "react-native-web";
 import { AntDesign } from '@expo/vector-icons';
-// import style from "../Style";
-import { useAppContext } from "../../../context/appContext";
+// import { useAppContext } from "../../../context/appContext";
 
 const App = (props) => {
-  const { style } = useAppContext()
+  // const { style } = useAppContext()
   const {
     modalVisible,
     setModalVisible,

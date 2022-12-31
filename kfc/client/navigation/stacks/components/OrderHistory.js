@@ -3,30 +3,36 @@ import { View, ScrollView, Dimensions, Text, StyleSheet, Pressable, Modal} from 
 import { useAppContext } from "../../../context/appContext";
 
 const OrderHistory = (props) => {
-  const { style, authFetch } = useAppContext()
   const {
     showHistory,
     setShowHistory,
     // modalVisible,
   } = props
-
+  
+  const { style, customAxios, token } = useAppContext()
+  
   // const navigation = useNavigation()
 
   // const [token, setToken, removeToken] = useCookies(['kfc'])
 
   const [allOrders, setAllOrders] = useState([])
   
+  function getOrderHistory() {
+    const uri = `order/`
+    customAxios(uri, {
+			headers: {
+				Authorization: `Token ${token}`
+			}
+		})
+    .then(response=>response.data)
+    .then((data)=>{
+      setAllOrders(data)
+      console.log(`allOrders:`, data)
+    })
+  }
+
   useEffect(()=>{
     // GET ORDER HISTORY
-    function getOrderHistory() {
-      const uri = `order/`
-      authFetch(uri)
-      .then(response.data)
-      .then((data)=>{
-        setAllOrders(data)
-        console.log(`allOrders:`, data)
-      })
-    }
 
     if (showHistory) {
       getOrderHistory()

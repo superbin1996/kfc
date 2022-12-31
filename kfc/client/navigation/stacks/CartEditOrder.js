@@ -6,10 +6,11 @@ import { EvilIcons } from '@expo/vector-icons';
 import CustomChoices from './components/CustomChoices'
 import ImageSlider from './components/ImageSlider';
 import { useAppContext } from '../../context/appContext';
+import { Wrapper } from '../../assets/wrappers/ImageSlider';
 
 export const CustomScreenContext = React.createContext()
 const CartEditOrder = ({navigation, route}) => {
-  const {style} = useAppContext()
+  const {style, changeImagePath} = useAppContext()
 
   const {
     order,
@@ -25,11 +26,29 @@ const CartEditOrder = ({navigation, route}) => {
 
   const [price, setPrice] = useState(0)
 
+  function updateCart() {
+    navigation.goBack()
+    navigation.navigate('Cart', {
+      dish: {
+        id: order.id, // use time for key, because we can order a dish two times
+        // dishId: categoryDish.id,
+        // name: categoryDish.name,
+        categoryDish: order.categoryDish,
+        itemsChosen: itemsChosen,
+        dishItems: order.dishItems,
+        images: order.images,
+        price: price,
+        amount: orderAmount,
+      },
+    })
+  }
+
   useEffect(() => {
     // CHANGE IMAGES OBJECT ARRAY TO ARRAY
     // console.log('custom dishItem', dishItems)
-    // let imgArray = order.images.map((image) => changeImagePath(image.image_url))
-    setImageArray(order.images)
+    console.log(order.images)
+    let imgArray = order.images.map((image) => changeImagePath(image.image_url))
+    setImageArray(imgArray)
     console.log(`singleItems`, order.dishItems.singleItems)
 
     setItemsChosen(order.itemsChosen)
@@ -52,23 +71,6 @@ const CartEditOrder = ({navigation, route}) => {
       setPrice(total)
     }
   }, [itemsChosen, order])
-
-  function updateCart() {
-    navigation.goBack()
-    navigation.navigate('Cart', {
-      dish: {
-        id: order.id, // use time for key, because we can order a dish two times
-        // dishId: categoryDish.id,
-        // name: categoryDish.name,
-        categoryDish: order.categoryDish,
-        itemsChosen: itemsChosen,
-        dishItems: order.dishItems,
-        images: order.images,
-        price: price,
-        amount: orderAmount,
-      },
-    })
-  }
   
   if (order == null) {
     return (
@@ -87,7 +89,9 @@ const CartEditOrder = ({navigation, route}) => {
           
           {/* ORDER AND COST */}
           <View style={style.orderAmount}>
-            <ImageSlider imageArray={imageArray} />
+            <Wrapper>
+              <ImageSlider imageArray={imageArray} />
+            </Wrapper>
 
             {/* DASHBOARD */}
             <View>

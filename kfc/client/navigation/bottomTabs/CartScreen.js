@@ -8,12 +8,6 @@ import { useAppContext } from '../../context/appContext';
 
 const CartScreen = (props) => {
 	const {
-		style,
-		host,
-		customAxios,
-	} = useAppContext()
-
-	const {
 		modalVisible,
 		// setModalVisible,
 		navigation,
@@ -21,19 +15,25 @@ const CartScreen = (props) => {
 		showHistory,
 		setShowHistory,
 	} = props
-
+	
 	// DISH NEED INITIAL VALUE, DEFINED IN APP INITIALPARAMS
 	const {
 		dish,
 	} = route.params
 
-	const [token, setToken, removeToken] = useCookies(['kfc'])
+	const {
+		style,
+		token,
+		customAxios,
+	} = useAppContext()	
 
-	const [username, setUsername] = useState("")
-	const [password, setPassword] = useState("")
+	// const [token, setToken, removeToken] = useCookies(['kfc'])
+
+	// const [username, setUsername] = useState("")
+	// const [password, setPassword] = useState("")
 
 	// Change button
-	const [showRegister, setShowRegister] = useState(false)
+	// const [showRegister, setShowRegister] = useState(false)
 
 	// ALL ITEMS
 	const [orders, setOrders] = useState([])
@@ -67,12 +67,12 @@ const CartScreen = (props) => {
 		let a = { orders: orders, orderDetails: body }
 
 		const url = `order/`
-		const { data } = await authFetch.post(
-			url,
-			{ data: a }
-		)
+		const { data } = await customAxios.post(url, { data: a }, {
+			headers: {
+				Authorization: `Token ${token}`
+			}
+		})
 		setOrders([])
-
 	}
 
 	const initializeOrder = () => {

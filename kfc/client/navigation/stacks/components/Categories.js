@@ -150,6 +150,7 @@ const Categories = () => {
         />
       }
 
+      {console.log('categoryDishes:', categoryDishes)}
       <Dishes categoryDishes={categoryDishes} />
 
     </View>

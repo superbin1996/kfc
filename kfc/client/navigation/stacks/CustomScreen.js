@@ -6,7 +6,7 @@ import CustomChoices from './components/CustomChoices'
 import ImageSlider from './components/ImageSlider'
 // import { useCookies } from 'react-cookie';
 import { useAppContext } from '../../context/appContext';
-
+import { Wrapper } from '../../assets/wrappers/ImageSlider';
 
 // Width and height of device
 // const windowWidth = Dimensions.get('window').width > 1000 ? 1000 : Dimensions.get('window').width
@@ -38,7 +38,7 @@ const CustomScreen = ({navigation, route}) => {
 	useEffect(() => {
 		// CHANGE IMAGES OBJECT ARRAY TO ARRAY
 		// console.log('custom dishItem', dishItems)
-		let imgArray = images.map((image) => changeImagePath(image.image))
+		let imgArray = images.map((image) => changeImagePath(image.image_url))
 		setImageArray(imgArray)
 		console.log(`singleItems`, dishItems.singleItems)
 	}, [images])
@@ -117,7 +117,9 @@ const CustomScreen = ({navigation, route}) => {
 
 				{/* ORDER AND COST */}
 				<View style={style.orderTotal}>
-					<ImageSlider imageArray={imageArray} />
+					<Wrapper>
+						<ImageSlider imageArray={imageArray} />
+					</Wrapper>
 
 					{/* DASHBOARD */}
 					<View>

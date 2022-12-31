@@ -5,11 +5,11 @@ import { useNavigation } from '@react-navigation/native';
 import { useAppContext } from "../../../context/appContext";
 
 export const Dish = (props) => {
-  const { style, host, customAxios, changeImagePath } = useAppContext()
-
   const {
     categoryDish,
   } = props
+
+  const { style, customAxios, changeImagePath } = useAppContext()
 
   const navigation = useNavigation()
 
@@ -37,46 +37,14 @@ export const Dish = (props) => {
   }
 
 
-  useEffect(() => {
-    setLoading(true)
-    console.log('categoryDish', categoryDish)
-
-    hideDishInfo(categoryDish)
-    
-    const url = `${host}/item_images/${categoryDish.id}`
-    // GET ITEM IMAGES
-    customAxios(categoryDish.id)
-    .then((response)=>{
-      return response.data
-    })
-    .then((data) => {
-      setImages(data)
-      console.log('images', data)
-    })
-
-    const url1 = `dish_items/${categoryDish.id}`
-    // GET DISH ITEMS
-    customAxios(url1)
-    .then(response=>response.data)
-    .then((data) => {
-      console.log(`dishItems:`, data)
-      setDishItems(data)
-    })
-    .finally(() => {
-      setLoading(false)
-    })
-
-  }, [])
-
-
   function imagePath() {
     let p
-    if (images === undefined || images.length == 0) {
+    if (images === undefined || images.length === 0) {
       // array empty or does not exist
       p = ''
     }
     else {
-      p = images[0].image
+      p = images[0].image_url
     }
     return { uri: changeImagePath(p) }
   }
@@ -131,8 +99,37 @@ export const Dish = (props) => {
         }
       })
     }
-
   }
+
+  useEffect(() => {
+    setLoading(true)
+    console.log('categoryDish', categoryDish)
+
+    hideDishInfo(categoryDish)
+    
+    const url = `item_images/${categoryDish.id}/`
+    // GET ITEM IMAGES
+    customAxios(url)
+    .then((response)=>{
+      return response.data
+    })
+    .then((data) => {
+      setImages(data)
+      console.log('images', data)
+    })
+
+    const url1 = `dish_items/${categoryDish.id}/`
+    // GET DISH ITEMS
+    customAxios(url1)
+    .then(response=>response.data)
+    .then((data) => {
+      console.log(`dishItems:`, data)
+      setDishItems(data)
+    })
+    .finally(() => {
+      setLoading(false)
+    })
+  }, [])
 
   // If have not finished loading
   if (loading) {

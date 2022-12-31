@@ -7,6 +7,7 @@ from django.conf import settings
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from rest_framework.authtoken.models import Token
+from icecream import ic
 
 @receiver(post_save, sender=settings.AUTH_USER_MODEL)
 def create_auth_token(sender, instance=None, created=False, **kwargs):
@@ -64,15 +65,17 @@ class Item(models.Model):
     price = models.IntegerField()
     image = models.ForeignKey(
         Picture, on_delete=models.SET_NULL, null=True, blank=True, related_name='items')
-    image_url = models.TextField(null=True, blank=True)
+    # image_url = models.TextField(null=True, blank=True)
 
     def __str__(self):
         return f"{self.id}, name: {self.name}, price: {self.price}"
 
-    def save(self, *args, **kwargs):
-        super().save(*args, **kwargs)
-        self.image_url = self.image.url
-        super().save(*args, **kwargs)
+    # def save(self, *args, **kwargs):
+    #     super().save(*args, **kwargs)
+    #     ic(self.image)
+    #     if self.image:
+    #         self.image_url = self.image.url
+    #     super().save(*args, **kwargs)
 
 
 class Selection(models.Model):
@@ -98,16 +101,16 @@ class Dish(models.Model):
         Selection, blank=True, related_name='dishSelections')
     images = models.ManyToManyField(
         Picture, blank=True, related_name='dishes')
-    image_url = models.TextField(null=True, blank=True)
+    # image_url = models.TextField(null=True, blank=True)
     price = models.IntegerField()
 
     def __str__(self):
         return f"{self.id}, name: {self.name}, category: {self.category}"
 
-    def save(self, *args, **kwargs):
-        super().save(*args, **kwargs)
-        self.image_url = self.image.url
-        super().save(*args, **kwargs)
+    # def save(self, *args, **kwargs):
+    #     super().save(*args, **kwargs)
+    #     self.image_url = self.image.url
+    #     super().save(*args, **kwargs)
 
 
 class Voucher(models.Model):

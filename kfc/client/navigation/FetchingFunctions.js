@@ -1,8 +1,8 @@
 export default class FetchingFunctions {
+  host = (process.env.NODE_ENV === "development") ? "http://127.0.0.1:8000" : ""
   constructor() {
-    this.baseUrl = (process.env.NODE_ENV === "development") ? "http://127.0.0.1:8000" : ""
-    this.token = this.getCookie('kfc')
-    this.baseUrl = `${host}/api/v1/`
+    token = this.getCookie('kfc')
+    this.baseUrl = `${host}/api/v1`
   }
   
   // Get document.cookie
@@ -114,6 +114,7 @@ export default class FetchingFunctions {
 
   // CHECK CURRENT TOKEN
   static CurrentUser() {
+    console.log(this.token)
     return (
       fetch(`${this.baseUrl}/current_user/`, {
         method: 'GET',
@@ -230,82 +231,82 @@ export default class FetchingFunctions {
     )
   }
 
-}
-
- 
+  
+  
   // static GetCategoryItems(categoryId) {
-  //   return (
+    //   return (
   //     fetch(`${this.baseUrl}/category_items/${categoryId}/`, {
-  //       method: "GET",
+    //       method: "GET",
+    //       headers: {
+      //         "Content-Type": "application/json",
+      //       }
+      //     })
+      //     .then((response) => { // This way will stop promise if error occur
+      //       if (!response.ok) {
+        //         throw Error(response.statusText)
+        //       }
+        //       return response.json()
+        //     })
+        //   )
+        // }
+        
+        // static GWI(uri, id) {
+          //   return (
+            //     fetch(`${this.baseUrl}/${uri}/${id}/`, {
+              //       method: "GET",
   //       headers: {
-  //         "Content-Type": "application/json",
+    //         "Content-Type": "application/json",
   //       }
   //     })
   //     .then((response) => { // This way will stop promise if error occur
   //       if (!response.ok) {
-  //         throw Error(response.statusText)
-  //       }
+    //         throw Error(response.statusText)
+    //       }
   //       return response.json()
   //     })
   //   )
   // }
-
-  // static GWI(uri, id) {
-  //   return (
-  //     fetch(`${this.baseUrl}/${uri}/${id}/`, {
-  //       method: "GET",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       }
-  //     })
-  //     .then((response) => { // This way will stop promise if error occur
-  //       if (!response.ok) {
-  //         throw Error(response.statusText)
-  //       }
-  //       return response.json()
-  //     })
-  //   )
-  // }
-
-
-
+  
+  
+  
   // Log in, fetch Token 
-  // static Login(body) {
-  //   return (
-  //     fetch("${this.baseUrl}/auth/", {
-  //       method: "POST",
+  static Login(body) {
+    return (
+      fetch(`${this.baseUrl}/auth/`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(body)
+      })
+      .then((response) => {
+        if (!response.ok) {
+          // console.log("Error")
+          throw Error(response.statusText)
+        }
+        // console.log("Success")
+        return response.json()
+      })
+      )
+    }
+    
+    // LOGIN FOR JWT
+    // static Login(object) {
+      //   return (
+        //     fetch(`${this.baseUrl}/login/`, {
+          //       method: 'POST',
   //       headers: {
-  //         "Content-Type": "application/json"
-  //       },
-  //       body: JSON.stringify(body)
-  //     })
-  //     .then((response) => {
-  //       if (!response.ok) {
-  //         // console.log("Error")
+    //         'Content-Type': 'application/json',
+    //       },
+    //       // body: JSON.stringify({'username': 'superbin1996', 'password': 'django.bin@28896d'}),
+    //       body: object,
+    //     })
+    //     .then(response => {
+      //       if (!response.ok) {
   //         throw Error(response.statusText)
   //       }
-  //       // console.log("Success")
   //       return response.json()
   //     })
   //   )
   // }
-
-  // LOGIN FOR JWT
-  // static Login(object) {
-  //   return (
-  //     fetch(`${this.baseUrl}/login/`, {
-  //       method: 'POST',
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //       },
-  //       // body: JSON.stringify({'username': 'superbin1996', 'password': 'django.bin@28896d'}),
-  //       body: object,
-  //     })
-  //     .then(response => {
-  //       if (!response.ok) {
-  //         throw Error(response.statusText)
-  //       }
-  //       return response.json()
-  //     })
-  //   )
-  // }
+}

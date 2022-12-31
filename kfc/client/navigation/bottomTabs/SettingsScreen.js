@@ -1,6 +1,6 @@
 // import { getFocusedRouteNameFromRoute } from '@react-navigation/native'
 import React, { useEffect, useState } from 'react'
-import { Text, View, ScrollView, StyleSheet, Dimensions, TextInput, Pressable, Modal } from 'react-native'
+import { Text, View, ScrollView, StyleSheet, Dimensions, TextInput, Pressable } from 'react-native'
 import { useCookies } from 'react-cookie';
 import { useAppContext } from '../../context/appContext';
 
@@ -9,7 +9,7 @@ export const CartScreenContext = React.createContext()
 const SettingsScreen = (props) => {
   const {
     style,
-    host,
+    baseURL,
     customAxios,
   } = useAppContext()
 
@@ -38,41 +38,41 @@ const SettingsScreen = (props) => {
   }, [token])
 
   // Login handle
-  const login = async (e) => {
+  const login = (e) => {
     console.log(`login run`)
     e.preventDefault()
 
     // console.log(`username: ${username}, password: ${password}`)
-    const url = `${host}/auth/`
     // Get token then push to cookie
-    const { data } = await customAxios.post(url, { username, password })
-    console.log(`token:`, data)
-    setToken("kfc", data.token)
-    setToken('username', username)
+    const url = `auth/`
+    customAxios.post(url, { username, password })
+      .then(response => response.data)
+      .then((jsonData) => {
+        console.log(`token:`, jsonData)
+        setToken("kfc", jsonData.token)
+        setToken('username', username)
 
-    // DONT KNOW WHY BUT IT NEED DOUBLE
-    setModalVisible(false)
-    setModalVisible(false)
+        // DONT KNOW WHY BUT IT NEED DOUBLE
+        setModalVisible(false)
+        setModalVisible(false)
 
-    const url1 = `current_user/`
-
-    // use getCookie() func to prevent undefined value
-    const { data1 } = await customAxios(
-      url1,
-      {
-        headers: {
-          Authorization: `Token ${token}`
-        }
-      }
-    )
-
-    setUser(data)
-    console.log('User:', data1)
-    if (!Object.keys(data).includes('detail')) {
-      setModalVisible(false)
-      console.log('Already login')
-    }
-
+        // GET USER
+        customAxios(`current_user/`, {
+            headers: {
+              Authorization: `Token ${jsonData.token}`
+            }
+          }
+        )
+        .then(response=>response.data)
+        .then((data) => {
+          setUser(data)
+          console.log('User:', data)
+          if (!Object.keys(data).includes('detail')) {
+            setModalVisible(false)
+            console.log('Already login')
+          }
+        })
+      })
   }
 
   function logout() {
@@ -85,8 +85,8 @@ const SettingsScreen = (props) => {
   const register = async (event) => {
     event.preventDefault()
     console.log(`register run: ${username} and password`)
-
-    const url = `${host}/register/`
+    
+    const url = `${baseURL}register/`
     const { data } = await customAxios.post(
       url,
       { username, password },
@@ -105,6 +105,8 @@ const SettingsScreen = (props) => {
     setShowRegister(!showRegister)
   }
 
+  // To log in 
+  console.log(modalVisible);
   if (modalVisible) {
     return (
       <ScrollView style={style.homeContainer} showsVerticalScrollIndicator={false}>

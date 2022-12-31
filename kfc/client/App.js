@@ -6,8 +6,8 @@ import MainContainer from './navigation/bottomTabs/MainContainer';
 import SettingsScreen from './navigation/bottomTabs/SettingsScreen'
 import CartScreen from './navigation/bottomTabs/CartScreen'
 import { CookiesProvider} from 'react-cookie'
-import { AppProvider} from './context/appContext';
-import FetchingFunctions from './navigation/FetchingFunctions';
+import { AppProvider, baseURL, token} from './context/appContext';
+import axios from 'axios';
 
 const homeName = 'Main'
 const cartName = 'Cart'
@@ -15,8 +15,6 @@ const settingsName = 'Settings'
 const Tab = createBottomTabNavigator()
 
 const App = () => {
-  // const [token, setToken, removeToken] = useCookies(['kfc'])
-
   // SHOW LOGIN MODAL
   const [modalVisible, setModalVisible] = useState(true)
 
@@ -26,8 +24,10 @@ const App = () => {
   const [user, setUser] = useState([])
 
   const getUser = () => {
-    // use getCookie() func to prevent undefined value
-    FetchingFunctions.CurrentUser()
+    console.log(baseURL, token);
+
+    axios(`${baseURL}current_user/`, {headers:{Authorization:`Token ${token}`}})
+    .then(response=>response.data)
     .then((data)=>{
       setUser(data)
       console.log('User:', data)
@@ -40,8 +40,9 @@ const App = () => {
 
   useEffect(() => {
     // CHECK CURRENT TOKEN
+    console.log('Check login');
     getUser()
-  }, [FetchingFunctions.token])
+  }, [token])
 
 
   return (

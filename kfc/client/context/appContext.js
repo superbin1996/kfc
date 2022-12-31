@@ -20,19 +20,18 @@ function getCookie(cname) {
 
 const token = getCookie('kfc')
 const host = (process.env.NODE_ENV === "development") ? "http://127.0.0.1:8000" : ""
+const baseURL = `${host}/api/v1/`
 
 const initialState = {
   windowWidth: Dimensions.get('window').width,
   windowHeight: Dimensions.get('window').height,
   token: token,
   host: host,
+  baseURL: baseURL,
 }
 
 const AppContext = React.createContext()
 const AppProvider = ({ children }) => {
-
-  // const [windowWidth, setWindowWidth] = useState(Dimensions.get('window').width)
-  // const [windowHeight, setWindowHeight] = useState(Dimensions.get('window').height)
 
   const [state, setState] = useState(initialState)
 
@@ -226,16 +225,19 @@ const AppProvider = ({ children }) => {
 
   // fetch without token
   const customAxios = axios.create({
-    baseURL: `${host}/api/v1/`,
+    baseURL: state.baseURL,
   })
 
+  // THIS SHIT WON'T WORK
   // fetch with token
   const authFetch = axios.create({
-    baseURL: `${host}/api/v1/`,
+    baseURL: state.baseURL,
   })
+
+  // THIS SHIT WON'T WORK
   authFetch.interceptors.request.use(
     (config) => {
-      config.headers.common['Authorization'] = `Token ${state.token}`
+      config.headers.common['Authorization'] = `Token ${token}`
       return config
     },
     (error) => {
@@ -273,4 +275,4 @@ const AppProvider = ({ children }) => {
 const useAppContext = () => { return (useContext(AppContext)) }
 
 
-export { useAppContext, AppProvider }
+export { useAppContext, AppProvider, baseURL, token }

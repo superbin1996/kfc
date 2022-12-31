@@ -10,6 +10,7 @@ const SingleItemCategory = (props) => {
     categoryChosen,
     setCategoryChosen,
   } = props
+  // console.log(singleItemCategory)
 
   return (
     <Pressable
