@@ -1,0 +1,28 @@
+{
+  "name": "dev",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "setup-server": "npm install && pip install -r requirements.txt",
+    "setup-client": "cd kfc/client && npm install &&  npm run build",
+    "setup-project": "npm run setup-client && npm run setup-server",
+    "client": "cd kfc/client && npx expo start --web",
+    "build-client": "cd kfc/client && expo build:web",
+    "start": "concurrently --kill-others-on-fail \"python manage.py runserver --insecure\" \"npm run client\"",
+    "start-ubuntu": "concurrently --kill-others-on-fail \"python3 manage.py runserver --insecure\" \"npm run client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/superbin1996/kfc.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/superbin1996/kfc/issues"
+  },
+  "homepage": "https://github.com/superbin1996/kfc#readme",
+  "dependencies": {
+    "concurrently": "^7.6.0"
+  }
+}
