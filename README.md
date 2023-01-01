@@ -1,55 +1,84 @@
-# web50 finalproject-capstone  
+# Project App: KFC
 
-## KFC order site (mobile first)  
+## KFC order site (`mobile first`)  
 https://youtu.be/nV5THz9gguo
 
 ## Creator: superbin1996
 
-> ### Distinctiveness and Complexity:  
-- This web application isn't social network site  
-- This web application is e-commerce site for food order, forcusing on front-end, mobile-first
-- This web application utilize Django on back-end and react-native on front-end
-- This web application is mobile-responsive. Not all device, but mainly test on Iphone 12.  
-Remember to reload site everytime you change windows dimensions to see responsive change  
+________________
 
-> ### Composition:  
-- `/capstone/finalproject`: setup of django project  
-- `/capstone/capstone`: setup of `capstone` app  
-- `/castone/media`: media folder storing pictures  
-- `/capstone/MyApp`: front-end subfolder, react-native-expo
-    - `/capstone/MyApp/App.js` is root js file
-    - `/capstone/MyApp/navigation` subfolder contains `bottomTabs` and `stacks` folder. Which are website pages components.  
+> ### Project structure:  
+
+- `server` directory is project folder,   
+- `kfc` directory is app folder,   
+- `kfc/media` directory stores media/image files  
+- `kfc/client` is client-frontend,   
+    - `kfc/client/App.js` is root js file
+    - `kfc/client/navigation` subfolder contains `bottomTabs` and `stacks` folder. Which are website pages components.  
         - `bottomTabs` includes `Home`, `Cart` and `Setting`
         - `stacks` includes mainly pages of `Home` bottomTabs
             - `stacks` folder also includes `components` folder. Which contains components of pages
+- `kfc/client/assets/wrappers` stores wrapper for style
+- `kfc/client/context/appContext.js` includes some functions and style
+________________
 
-    - `/capstone/MyApp/navigation/FetchingFunctions.js` contains api functions
-    - `/capstone/MyApp/navigation/Style.js` contains some stylesheets, not entirely
+> ### To setup project (work both for production and development)  
+  
+- On terminal in `root directory` run (if `npm` was installed):  
+
+    ```js
+    npm run setup-project  
+    ```
+
+________________
+> ### To run project (for both client and server simultaneously, for development)  
+
+- On terminal in `root directory`, run (if `npm` was installed):  
+
+    - On `windows`:
+        ```js
+        npm start
+        ```
+
+    - On `ubuntu`:
+        ```js
+        npm start-ubuntu
+        ```
+
+________________
+## Run server only (production)
+
+on terminal in `root directory`, run:  
+
+For `windows`:  
+```py
+python manage.py runserver --insecure
+```
+
+For 'ubuntu':
+
+```py
+python3 manage.py runserver --insecure
+```
+Add `--insecure` because in `server/settings.py`, DEBUG=False
 
 
-> ### To run (using bash in ubuntu 22.04):  
-- In `/capstone` root folder:
-    - run command line `pip install -r requirements.txt`
-    - run `python3 manage.py runserver`
+________________
+> ### Run server and client separately or more details about setup and operate command
 
-- In `/capstone/MyApp` subdirectory:
-    - run command line `npm install`  
-    - run `sudo npm install --global expo-cli` to install react-native expo  
-    - press `w` to open for web  
-    - If browser doesn't automatically open web application, try to access `http://localhost:19006/`site    
+- Open package.jon and refer to scripts  
 
-- Access admin site:
-    - Create `superuser` account by cli in root folder  
-    - Access `http://127.0.0.1:8000/admin/login/?next=/admin/` site and login  
 
-#### To add items as admin:  
-- Add item in `Pictures`(not require)
-- Add single-item in `Items`. Item chooses picture from `Pictures` 
-- Add choice-item in `Selection`. Choice-item chooses picture from `Pictures` and choose items from `Items`
-- Add dish to show in menu (User interface) in `Dishs`. Dish chooses single-items from `Items`, choice-items from `Selection` and picture from `Pictures`.  
-You may need to add in order: `Pictures`-`Items`-`Selections`-`Dishs`
-- You may add `Deals` for news and `Vouchers` for discount  
-Note: Many fields are duplicate when you try to add dish to menu. I still cannot optimize models structure.
+________________
+
+> ### To add items as admin (`sequences`):  
+- `Picture`, add image
+- `Item`, add single-item
+- `Selection`. selection of single-items
+- `Dish`. dishes show on menu (user interface)  
+- `Deals`, news and `Vouchers` for discount  
+
+    Note: Many fields are duplicate when you try to add dish to menu. I still cannot optimize models structure.
 
 
 
