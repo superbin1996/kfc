@@ -1,13 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { View} from 'react-native'
 // import style from '../../Style'
-import CustomChoice from './CustomChoice'
+import CustomChoice from '../CustomChoice'
 // import { EvilIcons } from '@expo/vector-icons';
-import { CustomScreenContext } from '../CustomScreen';
-import { useAppContext } from '../../../context/appContext';
+import { CustomScreenContext } from '../../CustomScreen';
+// import { useAppContext } from '../../../context/appContext';
 
 const CustomChoices = (props) => {
-  const { style } = useAppContext()
+  // const { style } = useAppContext()
   const {
     selection,
   } = props

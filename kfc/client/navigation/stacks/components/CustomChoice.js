@@ -15,7 +15,7 @@ const CustomChoice = (props) => {
   } = props
 
   function imagePath() {
-    return changeImagePath(choice.image__image)
+    return changeImagePath(choice.image__image_url)
   }
 
   function replaceChoice() {

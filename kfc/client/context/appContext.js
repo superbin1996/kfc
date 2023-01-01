@@ -179,6 +179,7 @@ const AppProvider = ({ children }) => {
       borderWidth: 1,
       borderColor: 'yellowBlanchedAlmond',
       height: state.windowWidth > 1000 ? 0.04 * state.windowWidth : 0.15 * state.windowWidth,
+      maxHeight: 60,
       overflow: 'hidden',
       wordWrap: 'break-word',
       textOverflow: 'ellipsis',

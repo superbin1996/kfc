@@ -12,7 +12,7 @@ class CategoryAdmin(admin.ModelAdmin):
 
 
 class PictureAdmin(admin.ModelAdmin):
-    list_display = ("id", "name", "category")
+    list_display = ("id", "name", "category", 'image_url')
 
 
 class ItemAdmin(admin.ModelAdmin):

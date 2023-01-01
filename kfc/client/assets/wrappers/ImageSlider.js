@@ -13,7 +13,7 @@ const ImageSliderWrapperContext = React.createContext()
 const Wrapper = ({ children }) => {
 
 	const [state, setState] = useState(initialState)
-	console.log(state.windowWidth, state.windowHeight);
+	// console.log(state.windowWidth, state.windowHeight);
 
 	function handleWindowSizeChange() {
 		const windowWidth1= Dimensions.get('window').width > 1000 ? 1000 : Dimensions.get('window').width

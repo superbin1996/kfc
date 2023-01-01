@@ -22,7 +22,7 @@ const DealsScreen = ({navigation, route}) => {
       <View style={style.dealImageContainer}>
         <Image
           style={style.dealImage}
-          source={{uri: changeImagePath(deal.image)}}
+          source={{uri: changeImagePath(deal.image_url)}}
         />
       </View>
     </ScrollView>

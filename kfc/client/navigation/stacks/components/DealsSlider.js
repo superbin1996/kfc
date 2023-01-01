@@ -102,7 +102,7 @@ const DealsSlider = (props) => {
               onPress={()=>imagePress(deal)}
             >
               <Image 
-                source={{ uri: changeImagePath(deal.image) }}
+                source={{ uri: changeImagePath(deal.image_url) }}
                 style={style.image} 
               />
             </Pressable>

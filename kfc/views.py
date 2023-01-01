@@ -62,7 +62,7 @@ def dish_items(request, dish_id):
             selections = Selection.objects.prefetch_related('choices', 'default').get(
                 id=id['id'])
             choices = selections.choices.values(
-                'id', 'name', 'price', 'category__field', 'image__image')
+                'id', 'name', 'price', 'category__field', 'image__image', 'image__image_url')
 
             default = {
                 'id': selections.default.id,

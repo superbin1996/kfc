@@ -69,7 +69,7 @@ const ImageSlider = (props) => {
     autoPlay = setTimeout(autoPlay, 5000)
   }
 
-  console.log(windowWidth, windowHeight, style);
+  // console.log(windowWidth, windowHeight, style);
 
   return (
     <View style={style.container}>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import { View, Image, Text, Pressable, } from "react-native";
 // import { HomeScreenContext } from "../HomeScreen";
 // import style from "../../Style";
@@ -21,10 +21,6 @@ const DrinkChoice = (props) => {
   } = useContext(CustomScreenContext)
 
   // const [number, setNumber] = useState(0)
-
-  useEffect(() => {
-
-  }, [])
 
   function imagePath() {
     return changeImagePath(choice.image__image)
