@@ -1,16 +1,19 @@
-import React, {useState, useEffect, useRef} from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { View, Image, ScrollView, Dimensions, Text, StyleSheet, Pressable } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { useAppContext } from "../../../context/appContext";
+import { useDealsSliderWrapperContext } from "../../../assets/wrappers/DealsSlider";
 
-const windowWidth = Dimensions.get('window').width > 1000 ? 1000 : Dimensions.get('window').width
-const windowHeight = windowWidth * 0.4
+// const windowWidth = Dimensions.get('window').width > 1000 ? 1000 : Dimensions.get('window').width
+// const windowHeight = windowWidth * 0.4
 
 const DealsSlider = (props) => {
-  const {changeImagePath} = useAppContext()
+  const { changeImagePath } = useAppContext()
   const {
     deals,
   } = props
+
+  const { style, windowWidth } = useDealsSliderWrapperContext()
 
   const navigation = useNavigation()
 
@@ -31,9 +34,9 @@ const DealsSlider = (props) => {
   //   console.log(`currentSlide:`, currentSlide)
   // }, [currentSlide])
 
-  useEffect(()=>{
+  useEffect(() => {
     autoPlay = setTimeout(changeSlide, 2000)
-    
+
     // clearTimeout right after setTimeout in infinity useEffect can help
     // function run one time to one time
     // this resolves turbulent-slide-problem after users swipe on their own
@@ -63,7 +66,7 @@ const DealsSlider = (props) => {
       scrollRef.current.scrollTo({ x: windowWidth * (currentSlide + 1), animated: true })
     }
   }
-  
+
   // var autoPlay = setTimeout(changeSlide, 2000)
 
   function userBeginDrag() {
@@ -76,34 +79,34 @@ const DealsSlider = (props) => {
 
   function imagePress(deal) {
     navigation.navigate('Deals', {
-      deal,  
+      deal,
     })
   }
 
   return (
     <View style={style.container}>
 
-      <ScrollView ref = {scrollRef}
+      <ScrollView ref={scrollRef}
         style={style.scroll}
         pagingEnabled
-        horizontal 
+        horizontal
         showsHorizontalScrollIndicator={false}
         onScroll={onSlideChange}
         scrollEventThrottle={windowWidth}
-        onScrollBeginDrag={()=>userBeginDrag()}
-        onScrollEndDrag={()=>userEndDrag()}
+        onScrollBeginDrag={() => userBeginDrag()}
+        onScrollEndDrag={() => userEndDrag()}
         overScrollMode={'never'}
       >
         {deals.map((deal) => {
           return (
             <Pressable
-              key={ deal.id }
-              style={style.imageContainer} 
-              onPress={()=>imagePress(deal)}
+              key={deal.id}
+              style={style.imageContainer}
+              onPress={() => imagePress(deal)}
             >
-              <Image 
+              <Image
                 source={{ uri: changeImagePath(deal.image_url) }}
-                style={style.image} 
+                style={style.image}
               />
             </Pressable>
           )
@@ -122,17 +125,17 @@ const DealsSlider = (props) => {
         }}>
           Deals
         </Text> */}
-      
+
       <View
         style={style.pagination}
       >
-        {deals.map((image, index)=>{
+        {deals.map((image, index) => {
           return (
-            <Text 
+            <Text
               key={index}
-              style={index === currentSlide ? style.dotActive : style.dots} 
+              style={index === currentSlide ? style.dotActive : style.dots}
             >
-              ⬤ 
+              ⬤
             </Text>
           )
         })}
@@ -142,47 +145,47 @@ const DealsSlider = (props) => {
   )
 }
 
-const style = StyleSheet.create({
-  container: {
-    // height, 
-    maxHheight: 300,
-    borderWidth: 2,
-    borderColor: 'violet',
-    // paddingLeft: '10px', 
-    // paddingRight: '10px', 
-    // paddingTop: '10px',
-  },
-  scroll: {
-    height:'100%',
-    maxHheight:300,
-  },
-  imageContainer: { 
-    width: windowWidth, 
-    height: windowHeight,
-    // maxHeight:300,
-  },
-  image: {
-    // flex: 1,
-    width: '100%',
-    height: '100%',
-    resizeMode: 'stretch',
-  },
-  pagination: {
-    position: 'absolute', 
-    bottom: 0, 
-    flexDirection: 'row',
-    alignSelf: 'center',
-  },
-  dots: {
-    color: 'white',
-    margin: 3,
-    fontSize: windowWidth/30,
-  },
-  dotActive: {
-    color: 'green',
-    margin: 3,
-    fontSize: windowWidth/30,
-  },
-})
+// const style = StyleSheet.create({
+//   container: {
+//     // height, 
+//     maxHheight: 300,
+//     borderWidth: 2,
+//     borderColor: 'violet',
+//     // paddingLeft: '10px', 
+//     // paddingRight: '10px', 
+//     // paddingTop: '10px',
+//   },
+//   scroll: {
+//     height: '100%',
+//     maxHheight: 300,
+//   },
+//   imageContainer: {
+//     width: windowWidth,
+//     height: windowHeight,
+//     // maxHeight:300,
+//   },
+//   image: {
+//     // flex: 1,
+//     width: '100%',
+//     height: '100%',
+//     resizeMode: 'stretch',
+//   },
+//   pagination: {
+//     position: 'absolute',
+//     bottom: 0,
+//     flexDirection: 'row',
+//     alignSelf: 'center',
+//   },
+//   dots: {
+//     color: 'white',
+//     margin: 3,
+//     fontSize: windowWidth / 30,
+//   },
+//   dotActive: {
+//     color: 'green',
+//     margin: 3,
+//     fontSize: windowWidth / 30,
+//   },
+// })
 
 export default DealsSlider

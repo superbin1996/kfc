@@ -25,11 +25,13 @@ ________________
 > ### To setup project (work both for production and development)  
   
 On terminal in `root directory` (if `npm` and `python` was installed):  
-Create python visual environment and activate it. After that, run:  
+**Create python visual environment and activate it**. After that, run:  
 
 ```js
 npm run setup-project  
 ```
+This command will trigger `pip install` and `npm install`, `npm run build` for both of server and client.
+
 > Open package.jon and refer to scripts for more details  
 
 ________________
@@ -46,7 +48,7 @@ ________________
         ```js
         npm run start-ubuntu
         ```
-
+Now you can access to browser via host `http://localhost:19006` in development mode and `http://127.0.0.1:8000` for production mode
 ________________
 ## Run server only (production)
 
@@ -62,7 +64,7 @@ For 'ubuntu':
 ```py
 python3 manage.py runserver --insecure
 ```
-Add `--insecure` because in `server/settings.py`, DEBUG=False
+Add `--insecure` because in `server/settings.py` if `DEBUG=False`
 
 
 ________________

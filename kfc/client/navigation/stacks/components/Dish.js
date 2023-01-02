@@ -145,6 +145,7 @@ export const Dish = (props) => {
       <Pressable style={style.dishImageContainer}
         onPress={customProps}
       >
+        {/* Dish image */}
         <Image
           style={style.DishImage}
           source={imagePath()}

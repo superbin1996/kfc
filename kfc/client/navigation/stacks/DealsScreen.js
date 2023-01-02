@@ -20,6 +20,7 @@ const DealsScreen = ({navigation, route}) => {
       <Text>{deal.description}</Text>
       <Text>{deal.hashtag}</Text>
       <View style={style.dealImageContainer}>
+        {/* Deal image */}
         <Image
           style={style.dealImage}
           source={{uri: changeImagePath(deal.image_url)}}

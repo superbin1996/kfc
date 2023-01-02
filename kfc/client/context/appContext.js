@@ -156,7 +156,9 @@ const AppProvider = ({ children }) => {
     },
     dishImageContainer: {
       width: '100%',
-      height: state.windowWidth > 1000 ? 0.07 * state.windowWidth : 0.25 * state.windowWidth,
+      // height: state.windowWidth > 1000 ? 0.07 * state.windowWidth : 0.25 * state.windowWidth,
+      // height: "70%",
+      aspectRatio: 1,
     },
     DishImage: {
       flexGrow: 1,
@@ -219,7 +221,7 @@ const AppProvider = ({ children }) => {
     },
     dealImage: {
       width: '100%',
-      height: '100%',
+      aspectRatio: 2,
       resizeMode: 'stretch',
     }
   })

@@ -180,6 +180,7 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 # Added
+STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'kfc/client/web-build/static/'),
 )
@@ -194,7 +195,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'kfc/media/')
 # Url to serve image
 MEDIA_URL = 'kfc/media/'
 
-STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
 
 # If DEBUG = TRUE, serve images file on local; else, serve on cloudinary
 if not DEBUG:

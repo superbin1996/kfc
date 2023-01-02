@@ -4,6 +4,7 @@ import { View, ScrollView } from "react-native";
 import Categories from "./components/Categories";
 import DealsSlider from "./components/DealsSlider";
 import { useAppContext } from "../../context/appContext";
+import { Wrapper } from "../../assets/wrappers/DealsSlider";
 
 // Width and height of device
 // const windowWidth = Dimensions.get('window').width > 1000 ? 1000 : Dimensions.get('window').width
@@ -40,7 +41,9 @@ const HomeScreen = ({ navigation }) => {
 
         {/* Deals recommendation */}
         <View>
-          <DealsSlider deals={deals} />
+          <Wrapper>
+            <DealsSlider deals={deals} />
+          </Wrapper>
         </View>
 
         {/* Categories */}

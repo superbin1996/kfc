@@ -41,7 +41,8 @@ const Wrapper = ({ children }) => {
 		},
 		imageContainer: {
 			width: state.windowWidth,
-			height: state.windowHeight,
+			// height: state.windowHeight,
+			aspectRatio: 2,
 			// maxHeight:300,
 		},
 		image: {
