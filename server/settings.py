@@ -215,6 +215,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Use in case there are following variables in .env file
 # To create superuser in deployment
-SUPERUSER_NAME = env('SUPERUSER_NAME')
-SUPERUSER_EMAIL = env('SUPERUSER_EMAIL')
-SUPERUSER_PASSWORD = env('SUPERUSER_PASSWORD')
+SUPERUSER_NAME = os.environ.get('SUPERUSER_NAME', default='superbin1996')
+SUPERUSER_EMAIL = os.environ.get('SUPERUSER_EMAIL', default='superbin1996@gmail.com')
+SUPERUSER_PASSWORD = os.environ.get('SUPERUSER_PASSWORD', default='secret')

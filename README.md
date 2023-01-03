@@ -23,13 +23,28 @@ ________________
 ________________
 
 > ### To setup project (work both for production and development)  
-  
-On terminal in `root directory` (if `npm` and `python` was installed):  
-**Create python visual environment and activate it**. After that, run:  
 
-```js
-npm run setup-project  
-```
+#### Setup frontend
+- Install node version manager  
+    > https://www.freecodecamp.org/news/node-version-manager-nvm-install-guide/
+
+- Install `node@16.13.0` by `nvm`   
+    ```nodejs
+    nvm install v16.13.0
+    nvm use v16.13.0
+    ```
+- `npm@">=8.1.0 <=9.2.0"` need to be installed globally, if you have different version npm, you might need to uninstall it first. 
+Locate to directory `./kfc/client/` just in case need to install some package which are not installed automatically
+
+#### Setup backend
+- In `root directory` on terminal i (if `npm` and `python` was installed):  
+    - **Create python visual environment and activate it**.   
+    After that, run:  
+
+        ```js
+        npm run setup-project
+        npm install concurrently
+        ```
 This command will trigger `pip install` and `npm install`, `npm run build` for both of server and client.
 
 > Open package.jon and refer to scripts for more details  

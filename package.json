@@ -8,7 +8,7 @@
     "setup-client": "cd kfc/client && npm install &&  npm run build",
     "setup-project": "npm run setup-client && npm run setup-server",
     "client": "cd kfc/client && npx expo start --web",
-    "build-client": "cd kfc/client && expo build:web",
+    "build-client": "cd kfc/client && npx expo export:web",
     "start": "concurrently --kill-others-on-fail \"python manage.py runserver --insecure\" \"npm run client\"",
     "start-ubuntu": "concurrently --kill-others-on-fail \"python3 manage.py runserver --insecure\" \"npm run client\""
   },
