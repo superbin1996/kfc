@@ -48,12 +48,12 @@ const Categories = () => {
 
     jsonPromise.then((data) => {
       // This never happens:
-      console.log("It worked!", data.id);
+      // console.log("It worked!", data.id);
       // Set first combo id to category id
       setCategoryChosen(data.id)
     }).catch((err) => {
       // Instead, this happens:
-      console.log("It failed!", err);
+      // console.log("It failed!", err);
     })
     console.log()
   }
@@ -71,15 +71,14 @@ const Categories = () => {
     })
 
     jsonPromise.then(function (data) {
-      console.log("It worked!", data.id);
+      // console.log("It worked!", data.id);
       // Set first combo id to category id
       setCategoryChosen(data.id)
 
     }).catch(function (err) {
       // Instead, this happens:
-      console.log("It failed!", err);
+      // console.log("It failed!", err);
     })
-    console.log()
   }
 
   function filterCombo(input) {
@@ -91,18 +90,18 @@ const Categories = () => {
   const getCategories = async () => {
     const url = `get_categories/`
     const { data } = await customAxios(url)
-    console.log('get_categories:',data);
+    // console.log('get_categories:',data);
     setCategories(data)
     findFirstComboId(data)
   }
 
   useEffect(() => {
-    console.log('categories useEffect')
+    // console.log('categories useEffect')
     getCategories()
   }, [])
 
   useEffect(() => {
-    console.log('categories useEffect1')
+    // console.log('categories useEffect1')
     if (categoryChosen !== 0) {
       getCategoryItems(categoryChosen)
     }
@@ -150,7 +149,7 @@ const Categories = () => {
         />
       }
 
-      {console.log('categoryDishes:', categoryDishes)}
+      {/* {console.log('categoryDishes:', categoryDishes)} */}
       <Dishes categoryDishes={categoryDishes} />
 
     </View>

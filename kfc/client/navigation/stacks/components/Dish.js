@@ -103,7 +103,7 @@ export const Dish = (props) => {
 
   useEffect(() => {
     setLoading(true)
-    console.log('categoryDish', categoryDish)
+    // console.log('categoryDish', categoryDish)
 
     hideDishInfo(categoryDish)
     
@@ -115,7 +115,7 @@ export const Dish = (props) => {
     })
     .then((data) => {
       setImages(data)
-      console.log('images', data)
+      // console.log('images', data)
     })
 
     const url1 = `dish_items/${categoryDish.id}/`
@@ -123,7 +123,7 @@ export const Dish = (props) => {
     customAxios(url1)
     .then(response=>response.data)
     .then((data) => {
-      console.log(`dishItems:`, data)
+      // console.log(`dishItems:`, data)
       setDishItems(data)
     })
     .finally(() => {

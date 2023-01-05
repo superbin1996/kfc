@@ -19,35 +19,35 @@ const CustomChoice = (props) => {
   }
 
   function replaceChoice() {
-    console.log(choice.selectionId)
+    // console.log(choice.selectionId)
     let newItemsChosen = JSON.parse(JSON.stringify(itemsChosen))
     let otherSelections = newItemsChosen?.filter(element => element.selectionId != choice.selectionId)
     let changedSelection = newItemsChosen?.filter(element => element.selectionId == choice.selectionId)
     try {
-      console.log(`otherSelections`, otherSelections)
-      console.log(`changedSelection`, changedSelection)
+      // console.log(`otherSelections`, otherSelections)
+      // console.log(`changedSelection`, changedSelection)
       changedSelection.shift()
       changedSelection.push(choice)
     }
     finally {
-      console.log(`newItemsChosen`, newItemsChosen)
+      // console.log(`newItemsChosen`, newItemsChosen)
       setItemsChosen([...otherSelections, ...changedSelection])
     }
   }
 
   function subtractPress() {
-    console.log(choice.selectionId)
+    // console.log(choice.selectionId)
     let newItemsChosen = JSON.parse(JSON.stringify(itemsChosen))
     if (choice.id != selection.default.id && choice.selectionId == selection.default.selectionId) {
       let a = newItemsChosen?.find(element => JSON.stringify(element) == JSON.stringify(choice))
-      console.log(`choice`, choice)
+      // console.log(`choice`, choice)
       let b = newItemsChosen.indexOf(a)
       try {
         newItemsChosen.splice(b, 1)
         newItemsChosen.push(selection.default)
       }
       finally {
-        console.log(`newItemsChosen`, newItemsChosen)
+        // console.log(`newItemsChosen`, newItemsChosen)
         setItemsChosen([...newItemsChosen])
       }
     }

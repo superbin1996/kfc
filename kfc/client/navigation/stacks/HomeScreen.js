@@ -24,7 +24,7 @@ const HomeScreen = ({ navigation }) => {
     const url = `get_deals/`
     const { data } = await customAxios(url)
     setDeals(data)
-    console.log(`deals`, data)
+    // console.log(`deals`, data)
   }
 
 

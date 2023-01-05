@@ -1,16 +1,16 @@
 import React, { useContext, useEffect, useState } from "react";
 import { StyleSheet, Dimensions } from "react-native";
 
-const windowWidth= Dimensions.get('window').width > 1000 ? 1000 : Dimensions.get('window').width
-const windowHeight = windowWidth * 0.4
-
-const initialState = {
-	windowWidth,
-	windowHeight,
-}
-
 const ImageSliderWrapperContext = React.createContext()
 const Wrapper = ({ children }) => {
+
+	const windowWidth= Dimensions.get('window').width > 1000 ? 1000 : Dimensions.get('window').width
+	const windowHeight = windowWidth * 0.4
+
+	const initialState = {
+		windowWidth,
+		windowHeight,
+	}
 
 	const [state, setState] = useState(initialState)
 	// console.log(state.windowWidth, state.windowHeight);

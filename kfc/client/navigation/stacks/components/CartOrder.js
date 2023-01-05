@@ -33,7 +33,7 @@ const CartOrder = (props) => {
       try
         {
           ordersCopy.splice(index, 1, order)
-          console.log('order:', order)
+          // console.log('order:', order)
         }
       finally {
         setOrders(ordersCopy)

@@ -27,7 +27,7 @@ const OrderHistory = (props) => {
     .then(response=>response.data)
     .then((data)=>{
       setAllOrders(data)
-      console.log(`allOrders:`, data)
+      // console.log(`allOrders:`, data)
     })
   }
 

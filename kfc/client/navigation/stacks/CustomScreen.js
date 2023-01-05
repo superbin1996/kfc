@@ -40,7 +40,7 @@ const CustomScreen = ({navigation, route}) => {
 		// console.log('custom dishItem', dishItems)
 		let imgArray = images.map((image) => changeImagePath(image.image_url))
 		setImageArray(imgArray)
-		console.log(`singleItems`, dishItems.singleItems)
+		// console.log(`singleItems`, dishItems.singleItems)
 	}, [images])
 
 	// SET itemsChosen
@@ -51,7 +51,7 @@ const CustomScreen = ({navigation, route}) => {
 		})
 
 		let singleItemDefault = dishItems.singleItems
-		console.log('singleItemDefault', singleItemDefault)
+		// console.log('singleItemDefault', singleItemDefault)
 		
 		try {
 		let c = selectionsDefault?.find(element => element.amount > 1)
@@ -62,7 +62,7 @@ const CustomScreen = ({navigation, route}) => {
 		}
 		}
 		finally {
-		console.log(`selectionsDefault`, selectionsDefault)
+		// console.log(`selectionsDefault`, selectionsDefault)
 		setItemsChosen([...selectionsDefault.sort(), ...singleItemDefault])  
 		}
 		
@@ -112,7 +112,7 @@ const CustomScreen = ({navigation, route}) => {
 		<CustomScreenContext.Provider
 			value={{setItemsChosen, itemsChosen}}
 		>
-			{console.log(`itemsChosen`, itemsChosen)}
+			{/* {console.log(`itemsChosen`, itemsChosen)} */}
 			<ScrollView style={style.homeContainer} showsVerticalScrollIndicator={false}>
 
 				{/* ORDER AND COST */}

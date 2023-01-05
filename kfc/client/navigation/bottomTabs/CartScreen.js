@@ -45,8 +45,8 @@ const CartScreen = (props) => {
 	const [promotion, setPromotion] = useState('')
 
 	useEffect(() => {
-		console.log('dish', dish)
-		console.log('cookie:', token['kfc'])
+		// console.log('dish', dish)
+		// console.log('cookie:', token['kfc'])
 		// getUser()
 
 	}, [token, dish])
@@ -94,9 +94,9 @@ const CartScreen = (props) => {
 		initializeOrder()
 	}, [dish])
 
-	useEffect(() => {
-		console.log(`orders:`, orders)
-	}, [orders])
+	// useEffect(() => {
+	// 	console.log(`orders:`, orders)
+	// }, [orders])
 
 	function priceSum() {
 		let priceSum = 0

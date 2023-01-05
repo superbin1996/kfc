@@ -24,23 +24,23 @@ const App = () => {
   const [user, setUser] = useState([])
 
   const getUser = () => {
-    console.log(baseURL, token);
+    // console.log(baseURL, token);
 
     axios(`${baseURL}current_user/`, {headers:{Authorization:`Token ${token}`}})
     .then(response=>response.data)
     .then((data)=>{
       setUser(data)
-      console.log('User:', data)
+      // console.log('User:', data)
       if (!Object.keys(data).includes('detail')) {
         setModalVisible(false)
-        console.log('Already login')
+        // console.log('Already login')
       }
     })
   }
 
   useEffect(() => {
     // CHECK CURRENT TOKEN
-    console.log('Check login');
+    // console.log('Check login');
     getUser()
   }, [token])
 

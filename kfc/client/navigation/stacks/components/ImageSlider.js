@@ -7,8 +7,9 @@ const ImageSlider = (props) => {
   const {
     imageArray,
   } = props
+
   const {changeImagePath} = useAppContext()
-  const {style, windowWidth, windowHeight} = useImageSliderWrapperContext()
+  const {style, windowWidth} = useImageSliderWrapperContext()
 
   
   // Dot state

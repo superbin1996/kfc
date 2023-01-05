@@ -5,8 +5,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.decorators import api_view, permission_classes, authentication_classes
 from rest_framework.permissions import IsAuthenticated, AllowAny
-from django.contrib.auth import authenticate
-from rest_framework.authtoken.views import Token
+# from rest_framework.authtoken.views import Token
 from rest_framework.authentication import TokenAuthentication
 # from rest_framework.permissions import AllowAny
 
@@ -130,13 +129,12 @@ def register(request):
     username = request.data.get('username')
     password = request.data.get('password')
     try:
-        user = User.objects.create_user(username=username, password=password)
-        # ic(user)
-        Token.objects.create(user=user)
-        # ic(token)
-        return Response(status=status.HTTP_201_CREATED)
-    except:
+        User.objects.create_user(username=username, password=password)
+        # Dont need to create token
+    except User.DoesNotExist:
         return Response({'detail': 'Wrong username or password'}, status=status.HTTP_400_BAD_REQUEST)
+
+    return Response(status=status.HTTP_201_CREATED)
 
 
 @api_view(['GET', 'POST'])

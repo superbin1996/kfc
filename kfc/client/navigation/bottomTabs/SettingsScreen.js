@@ -33,13 +33,13 @@ const SettingsScreen = (props) => {
   const [showRegister, setShowRegister] = useState(false)
 
   useEffect(() => {
-    console.log('cookie:', token['kfc'])
+    // console.log('cookie:', token['kfc'])
     // getUser()
   }, [token])
 
   // Login handle
   const login = (e) => {
-    console.log(`login run`)
+    // console.log(`login run`)
     e.preventDefault()
 
     // console.log(`username: ${username}, password: ${password}`)
@@ -48,7 +48,7 @@ const SettingsScreen = (props) => {
     customAxios.post(url, { username, password })
       .then(response => response.data)
       .then((jsonData) => {
-        console.log(`token:`, jsonData)
+        // console.log(`token:`, jsonData)
         setToken("kfc", jsonData.token)
         setToken('username', username)
 
@@ -66,10 +66,10 @@ const SettingsScreen = (props) => {
         .then(response=>response.data)
         .then((data) => {
           setUser(data)
-          console.log('User:', data)
+          // console.log('User:', data)
           if (!Object.keys(data).includes('detail')) {
             setModalVisible(false)
-            console.log('Already login')
+            // console.log('Already login')
           }
         })
       })
@@ -84,20 +84,17 @@ const SettingsScreen = (props) => {
   // Register handle
   const register = async (event) => {
     event.preventDefault()
-    console.log(`register run: ${username} and password`)
+    // console.log(`register run: ${username} and password`)
     
     const url = `${baseURL}register/`
-    const { data } = await customAxios.post(
+    await customAxios.post(
       url,
-      { username, password },
-      {
-        headers: {
-          Authorization: `Token ${token}`
-        }
-      }
+      { username, password }
     )
-    console.log(event)
-    login(event)
+    // console.log(data)
+    setTimeout(()=>{
+      login(event)
+    }, 500)
 
   }
 
@@ -106,7 +103,7 @@ const SettingsScreen = (props) => {
   }
 
   // To log in 
-  console.log(modalVisible);
+  // console.log(modalVisible);
   if (modalVisible) {
     return (
       <ScrollView style={style.homeContainer} showsVerticalScrollIndicator={false}>
@@ -183,10 +180,10 @@ const SettingsScreen = (props) => {
             :
             // CHANGE TO REGISTER
             <Pressable onPress={changeButton} style={{ paddingTop: 15 }}>
-              <Text style={{
-                fontSize: 16,
-                fontWeight: 500,
-              }}>Don't have an account? Sign up</Text>
+                <Text style={{
+                  fontSize: 16,
+                  fontWeight: 500,
+                }}>Don't have an account? <Text style={{color:'blue'}}>Sign up</Text></Text>
             </Pressable>
           }
         </View>

@@ -18,7 +18,7 @@ const CustomChoices = (props) => {
       return element.id
     })
     setChosen(itemIds)
-    console.log(`chosen`, itemIds)
+    // console.log(`chosen`, itemIds)
   }, [itemsChosen])
 
   return (
