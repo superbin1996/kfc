@@ -135,7 +135,7 @@ const AppProvider = ({ children }) => {
       height: 'fit-content',
       paddingLeft: state.windowWidth > 1000 ? '2.5%' : 0.033 * state.windowWidth,
       paddingRight: state.windowWidth > 1000 ? '2.5%' : 0.033 * state.windowWidth,
-      maxWidth: 240,
+      maxWidth: 0.9*state.windowWidth/2 > 240 ? 240 : 0.9*state.windowWidth/2,
       flexDirection: 'column',
       flexGrow: 1,
       marginBottom: 20,
