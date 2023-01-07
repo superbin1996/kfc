@@ -110,8 +110,8 @@ const Categories = () => {
   return (
     <View style={{
       width: '100%',
-      borderColor: 'gray',
-      borderWidth: 1,
+      // borderColor: 'gray',
+      // borderWidth: 1,
     }}>
       <View style={[style.homeCategories, { alignContent: 'stretch' }]}>
         {categories.filter(category => filterCombo(category)).map((category) => {
