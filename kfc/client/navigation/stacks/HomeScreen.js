@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { View, ScrollView } from "react-native";
-// import { AntDesign } from '@expo/vector-icons';
 import Categories from "./components/Categories";
 import DealsSlider from "./components/DealsSlider";
 import { useAppContext } from "../../context/appContext";

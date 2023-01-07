@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { View, Image, Text, Pressable, } from "react-native";
-import { MaterialIcons } from '@expo/vector-icons';
+import { BiDownArrow } from 'react-icons/bi';
 import { useNavigation } from '@react-navigation/native';
 import { useAppContext } from "../../../context/appContext";
 
@@ -202,7 +202,7 @@ export const Dish = (props) => {
         <Pressable style={{ alignSelf: 'center' }}
           onPress={() => setShorten(!shorten)}
         >
-          <MaterialIcons name="keyboard-arrow-down" size={24} color="black" style={shorten ? { transform: 'rotate(0deg)', transitionDuration: '500ms' } : { transform: 'rotate(180deg)', transitionDuration: '500ms' }} />
+          <BiDownArrow name="keyboard-arrow-down" size={24} color="black" style={shorten ? { transform: 'rotate(0deg)', transitionDuration: '500ms' } : { transform: 'rotate(180deg)', transitionDuration: '500ms' }} />
         </Pressable>
 
         <Pressable style={style.customBtn}

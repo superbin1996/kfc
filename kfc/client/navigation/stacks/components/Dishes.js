@@ -1,6 +1,6 @@
 import React from "react";
 import { View } from "react-native";
-import { AntDesign } from '@expo/vector-icons';
+import { BiDownArrowCircle } from 'react-icons/bi';
 // import style from "../../Style";
 import { Dish } from "./Dish";
 import { useAppContext } from "../../../context/appContext";
@@ -18,7 +18,7 @@ export const Dishes = (props) => {
   return (
     <View style={style.homeFoodListCover}>
       {/* Arrow icon */}
-      <AntDesign name="downcircleo" size={24} color="black"
+      <BiDownArrowCircle size={24} color="blue"
         style={{ marginLeft: 'auto', marginRight: 'auto' }} />
 
       <View
