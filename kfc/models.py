@@ -24,7 +24,7 @@ class User(AbstractUser):
 class Category(models.Model):
     field = models.CharField(max_length=100)
     image = models.ImageField(
-        default='default/imagenotfound.png', upload_to='singleItemsCategory/')
+        default='default/imagenotfound_hwnkxy.png', upload_to='singleItemsCategory/')
     image_url = models.TextField(null=True, blank=True)
 
     def __str__(self):
@@ -42,7 +42,7 @@ class Picture(models.Model):
     category = models.ForeignKey(
         Category, on_delete=models.SET_NULL, null=True, blank=True, related_name='pictures')
     image = models.ImageField(
-        default='default/imagenotfound.png', upload_to='dishes/')
+        default='default/imagenotfound_hwnkxy.png', upload_to='dishes/')
     image_url = models.TextField(null=True, blank=True)
 
     class Meta:
@@ -142,7 +142,7 @@ class Order(models.Model):
 class Deal(models.Model):
     title = models.CharField(max_length=300)
     image = models.ImageField(
-        default='default/imagenotfound.png', upload_to='deals/')
+        default='default/imagenotfound_hwnkxy.png', upload_to='deals/')
     image_url = models.TextField(null=True, blank=True)
     description = models.TextField(blank=True)
     dish = models.ForeignKey(
