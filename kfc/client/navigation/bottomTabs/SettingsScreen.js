@@ -86,7 +86,7 @@ const SettingsScreen = (props) => {
     event.preventDefault()
     // console.log(`register run: ${username} and password`)
     
-    const url = `${baseURL}register/`
+    const url = `register/`
     await customAxios.post(
       url,
       { username, password }

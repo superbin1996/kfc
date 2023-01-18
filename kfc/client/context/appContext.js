@@ -150,9 +150,6 @@ const AppProvider = ({ children }) => {
       width: '100%',
       height: 18,
       fontSize: 14,
-      // textOverflow: 'ellipsis',
-      // overflow: 'hidden',
-      // whiteSpace:'wrap',
     },
     dishImageContainer: {
       width: '100%',
@@ -183,9 +180,6 @@ const AppProvider = ({ children }) => {
       height: state.windowWidth > 1000 ? 0.04 * state.windowWidth : 0.15 * state.windowWidth,
       maxHeight: 60,
       overflow: 'hidden',
-      wordWrap: 'break-word',
-      textOverflow: 'ellipsis',
-      hyphens: 'auto',
     },
     dishInfoShow: {
       borderWidth: 1,

@@ -10,9 +10,9 @@ const DealsScreen = ({navigation, route}) => {
     deal,
   } = route.params
 
-  useEffect(()=>{
-    console.log('deal', deal)
-  }, [])
+  // useEffect(()=>{
+  //   console.log('deal', deal)
+  // }, [])
 
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
